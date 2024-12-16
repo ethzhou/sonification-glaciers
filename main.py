@@ -158,18 +158,17 @@ year = 1975  # The game will instantly increment year in the first loop
 YEAR_DURATION = 10000
 t_year = YEAR_DURATION + 1
 region_has_been_added_to_year = np.repeat(False, 19)
-global_cumulative_b = 0
 global_cumulative_dm = 0
 
 count_additions = 0
 
-displayed_stat = "b"
+displayed_stat = "dm"
 
 image_blank_map_rect = IMAGE_BLANK_MAP.get_rect()
 image_blank_map_rect.center = screen.get_rect().center
 
 text_active_year = f"{year}"
-text_active_cumulative = "+0.000 m w.e."
+text_active_cumulative = "+0.000 Gt"
 
 id_region_active_text = None
 text_active_region_name = ""
@@ -220,7 +219,6 @@ while game:
                 else:
                     if year > 1975:
                         i_due_regions = np.asarray(~region_has_been_added_to_year)
-                        global_cumulative_b += np.sum([region.b_series[year] for region in regions[i_due_regions]])
                         global_cumulative_dm += np.sum([region.dm_series[year] for region in regions[i_due_regions]])
                         count_additions += sum(i_due_regions)
 
@@ -238,12 +236,11 @@ while game:
                     t_year = 0
 
             i_due_regions = np.asarray(~region_has_been_added_to_year & (t_year > np.arange(19) / 19 * YEAR_DURATION))
-            global_cumulative_b += np.sum([region.b_series[year] for region in regions[i_due_regions]])
             global_cumulative_dm += np.sum([region.dm_series[year] for region in regions[i_due_regions]])
             region_has_been_added_to_year[i_due_regions] = True
             count_additions += sum(i_due_regions)
 
-            text_active_cumulative = f"{global_cumulative_b:+.3f} m w.e." if displayed_stat == "b" else f"{global_cumulative_dm:+.3f} Gt"
+            text_active_cumulative = f"{global_cumulative_dm:+.3f} Gt"
             
             for region in regions:
                 collision_result = region.check_player_collision(t_elapsed, player, MIXER_SAMPLING_RATE)
@@ -273,7 +270,7 @@ while game:
             if t_end > 7000:
                 stage += 1
             elif t_end > 1800:
-                draw_text(end_surface, font_smaller_2, "Ethan Zhou", False, (255, 255, 255), (WIDTH - 50, HEIGHT - 30), coordinates_indicate_bottom_right=True)
+                draw_text(end_surface, font_smaller_2, "Ethan Zhou", False, (255, 255, 255), (WIDTH - 50, HEIGHT - 35), coordinates_indicate_bottom_right=True)
             
         case _:
             game = False
@@ -295,7 +292,6 @@ while game:
                 print("switching displayed stat")
                 displayed_stat = "dm" if displayed_stat == "b" else "b"
 
-                text_active_cumulative = f"{global_cumulative_b:+.3f} m w.e." if displayed_stat == "b" else f"{global_cumulative_dm:+.3f} Gt"
                 if year > 1975 and id_region_active_text:
                     text_active_region_data = f"({f"{region.b_series[year]:+.3f} m w.e." if displayed_stat == "b" else f"{region.dm_series[year]:+.3f} Gt"})"
                     text_active_region_cumulative = f"{region.cumulative_b:+.3f} m w.e." if displayed_stat == "b" else f"{region.cumulative_dm:+.3f} Gt"
