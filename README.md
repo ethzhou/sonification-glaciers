@@ -1,4 +1,6 @@
 Final project for Music 128 Topics in Music History: Music and Data
+Visualization and sonification of global glacier region mass balance
+[GitHub repository](https://github.com/ethzhou/sonification-glaciers/)
 
 ## Packages
 
