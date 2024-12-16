@@ -4,7 +4,7 @@ Final project for Music 128 Topics in Music History: Music and Data. Visualizati
 
 ## Packages
 
-- Pygame ==2.6.1
+- Pygame==2.6.1
 - numpy==1.26.4
 
 ## Controls
