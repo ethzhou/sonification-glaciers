@@ -2,6 +2,20 @@ Final project for Music 128 Topics in Music History: Music and Data. Visualizati
 
 [GitHub repository](https://github.com/ethzhou/sonification-glaciers/). Python 3.12.8.
 
+## Run
+
+Open the directory in terminal, and enter
+
+```
+chmod +x sonification.sh
+```
+
+to make the file executable. Then, run the program by entering
+
+```
+./sonification.sh
+```
+
 ## Packages
 
 - Pygame==2.6.1
