@@ -1,0 +1,20 @@
+id,name,pixel x,pixel y,RGI 6.0 area
+1,Alaska,238,172,86725
+2,Western Canada and USA,277,194,14524
+3,Arctic Canada North,420,135,105111
+4,Arctic Canada South,425,161,40888
+5,Greenland Periphery,515,142,89717
+6,Iceland,550,174,11060
+7,Svalbard and Jan Mayen,702,128,33959
+8,Scandinavia,643,167,2949
+9,Russian Arctic,744,133,51592
+10,North Asia,796,175,2410
+11,Central Europe,619,234,2092
+12,Caucasus and Middle East,709,263,1307
+13,Central Asia,846,264,49303
+14,South Asia West,805,290,33568
+15,South Asia East,850,294,14734
+16,Low Latitudes,679,392,2341
+17,Southern Andes,394,535,29429
+18,New Zealand,1076,541,1162
+19,Subantarctic and Antarctic Islands,631,616,132867
